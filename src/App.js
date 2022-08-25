@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './app.css'
+import NavBar from './components/NavBar';
 
 function App() {
+
+let numeroDeClase = 40;
+const estilos =  {
+  color: "salmon",
+  paddingTop: "10px",
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <>
+      <NavBar/>
+      <div className="App">
+        {/* Estilos en linea */}
+        <p style={estilos}>Probando cosas aca {numeroDeClase} !
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <hr/>
+        <input placeholder='Ingrese algun contenido'/>
+      </div>
+    </>
   );
 }
 
