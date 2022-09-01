@@ -2,10 +2,3 @@
     margin: 0;
     padding: 0;
 }
-
-.App {
-    font-size: 26px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}

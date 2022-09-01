@@ -1,25 +1,21 @@
-import './app.css'
+import './app.css';
 import NavBar from './components/NavBar';
+import ItemListContainer from './containers/ItemListContainer';
 
 function App() {
 
-let numeroDeClase = 40;
-const estilos =  {
-  color: "salmon",
-  paddingTop: "10px",
-}
+const categorias = ["Vinos Y Espumantes","Whisky","Cervezas","Espirituosas"];
+  
+  
   return (
+    
     <>
-      <NavBar/>
-      <div className="App">
-        {/* Estilos en linea */}
-        <p style={estilos}>Probando cosas aca {numeroDeClase} !
-        </p>
-        <hr/>
-        <input placeholder='Ingrese algun contenido'/>
-      </div>
+      <NavBar categories={categorias}/>
+      <ItemListContainer greeting={"Item List Container"}/>
     </>
+
   );
+
 }
 
 export default App;
