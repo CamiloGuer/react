@@ -1,4 +1,5 @@
 import React from 'react'
+import CartWidget from '../CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 const NavBar = () => {
@@ -24,6 +25,7 @@ const NavBar = () => {
       </li>
     </ul>
   </div>
+  <CartWidget></CartWidget>
 </nav>
   )
 }
