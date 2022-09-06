@@ -1,0 +1,22 @@
+button{
+    border: solid 2px black;
+    font-size: 28px;
+    color: red;
+    border-radius: 2px;
+    margin: 15px;
+    width: 35px;
+}
+
+
+h2{
+    color: black;
+    font-size: 30px;
+    margin: 15px;
+    font-weight: bold;
+}
+.contador{
+    display: flex;
+}
+.carritos{
+    width: 300px;
+}
