@@ -2,7 +2,10 @@ import React from 'react'
 
 const Item = ({product}) => {
   return (
-    <h1>{product.name}</h1>
+    <div>
+      <img src={product.image} width={250} alt="product" />
+      <h1>{product.title}</h1>
+    </div>
   )
 }
 
