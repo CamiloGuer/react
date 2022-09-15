@@ -26,14 +26,22 @@ const ItemListContainer = ({greeting}) => {
 
 
     try{
+      if (categoryId){
+        const response = await fetch("https://fakestoreapi.com/products/category/" + categoryId);
+        const productos = await response.json();
+        setProductos(productos);
+
+      }
+      else {      
       const response = await fetch("https://fakestoreapi.com/products");
       const productos = await response.json();
-      setProductos(productos);
+      setProductos(productos);}
+
     } catch(error){
       console.log(error);
     }
   })()
-},[productos])
+},[categoryId])
 
   return (
     <div>
