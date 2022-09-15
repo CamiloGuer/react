@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import ItemListContainer from './containers/ItemListContainer';
+import ItemDetailContainer from './containers/ItemDetailContainer';
+//import ItemListContainer from './containers/ItemListContainer';
 
 function App() {
 
@@ -11,7 +12,8 @@ const categorias = ["Vinos Y Espumantes","Whisky","Cervezas","Espirituosas"];
     
     <>
       <NavBar categories={categorias}/>
-      <ItemListContainer greeting={"Item List Container"}/>
+      {/*<ItemListContainer greeting={"Item List Container"}/>*/}
+      <ItemDetailContainer/>
     </>
 
   );

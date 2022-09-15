@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ItemDetail from '../../components/ItemDetail'
 
 const ItemDetailContainer = () => {
@@ -18,6 +18,7 @@ const ItemDetailContainer = () => {
                     console.log(error);
                 }
         }
+        getProducts()
 
     }, [])
     
