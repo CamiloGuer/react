@@ -5,32 +5,29 @@ import ItemDetail from '../../components/ItemDetail'
 
 const ItemDetailContainer = () => {
     const [productDetail, setProductDetail] = useState({})
+
+    const {productId} = useParams();
+
+    console.log(productId);
     
-    const params = useParams();
-
     useEffect(()=> {
-
-        
 
         const getProducts = async () => {
             try {
-                const response = await fetch('https://fakestoreapi.com/products/${productId}');
+                const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
                 const data = await response.json();
                 setProductDetail(data);
-                } catch (error) {
-                    console.log(error);
-                }
+            } catch (error) {
+                console.log(error);
+            }
         }
-        getProducts()
+        getProducts();
 
     }, [productId])
-    
-    
-    return (
-    <div>
-        <ItemDetail product={productDetail}/>
-    </div>
-  )
-}
 
-export default ItemDetailContainer
+    console.log(productDetail);
+
+    return <ItemDetail product={productDetail}/>;
+};
+
+export default ItemDetailContainer;
