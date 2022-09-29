@@ -1,10 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Item from '../Item'
-import Modal from '../Modal'
+
 
 const ItemList = ({products}) => {
 
-  const [modalShow, setModalShow] = useState(true);
 
   return (
     <div className='item-container'>
@@ -14,7 +13,6 @@ const ItemList = ({products}) => {
     :
     <h2>Loading...</h2>
   }
-  { modalShow ? <Modal handleClose={setModalShow}/> : null}
 </div>
 )
 }
