@@ -2,48 +2,35 @@ import React from 'react'
 import { useContext } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import { Shop } from '../../context/ShopProvider';
+import { Link } from 'react-router-dom';
+import ItemCart from '../../components/ItemCart/index.jsx'
+
 
 
 const Cart = () => {
 
-  const {cart, removeItem, clearCart} = useContext(Shop);
 
-  
-
-const columns = [
-  { field: 'image', headerName: 'Image', width: 400 },
-  { field: 'title', headerName: 'Product', width: 250 },
-  { field: 'quantity', headerName: 'Quantity', width: 130 },
-  {
-    field: 'remove',
-    headerName: '',
-    width: 120,
-  }
-];
-
-const filas = []
-cart.forEach(item => {
-  filas.push({
-    id: item.id,
-    image: item.image,
-    title: item.title,
-    quantity: item.quantity,
-    remove: <button onClick={removeItem}>borrar</button>,
-  })
-
-
-})
-
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={filas}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-      />
-    </div>
-  );
+const {cart, totalPrice} = useContext(Shop)
+    console.log('llega', cart)
+    return (
+        <div>
+            {
+                cart.length === 0 ?
+                <div className='d-flex flex-column justify-content-center text-center mx-auto py-4'>
+                <p className='btn btn-danger'>No hay elementos en el carrito</p>
+                <Link to='/' className='btn btn-outline-dark' style={{width: ''}}>!Realiza tu compra!</Link>
+            </div>
+                :
+                cart.map(product => 
+                <ItemCart key={product.id} product={product}/>
+                )
+            }    
+            <div className='d-flex justify-content-center'>
+                <p className='btn btn-dark' style={{width: '15rem'}}>Total: ${totalPrice()}</p>
+            </div>  
+        </div>
+    )
 }
+
 
 export default Cart;

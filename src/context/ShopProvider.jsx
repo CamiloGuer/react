@@ -1,52 +1,60 @@
 import React, { useState } from 'react'
 import { createContext } from "react";
 
+
 export const Shop = createContext();
+
 
 const ShopProvider = ({children}) => {
     
     const [cart, setCart] = useState([])
 
-    const addItem = (item) => {
 
-        const productoRepetido = isInCart(item.id);
-        console.log(productoRepetido);
-        if (productoRepetido) {
-            const cartModified = cart.map(product => {
-                if (product.id === item.id) {
-                    product.quantity += item.quantity
-                    return product
-                }
-                return product
-            })
-            setCart(cartModified)
+    const addItem = (item, qty) => {
+
+
+        if (isInCart(item.id)){
+            setCart(cart.map(product => {
+                return product.id === item.id ? { ...product, qty: product.qty + qty} : product
+            }))
         } else {
-            const cartModificado = [...cart, item]
-            setCart(cartModificado)
+            setCart([...cart, {...item, qty}])
         }
 
+
     }
+
+
+    console.log('whott:', cart);
+
 
     const isInCart = (id) => {
-        return cart.some(product => product.id === id)
+        return cart.find(product => product.id === id)
     }
 
-    const removeItem = (product) => {
-        const newItems = cart.filter((item) => item.id !== product.id) 
-        setCart(newItems)
+
+    const totalPrice = () => {
+        return cart.reduce((prev, act) => prev + act.qty * act.price, 0)
     }
+
+
+    const removeItem = (id) => setCart(cart.filter(product => product.id !== id))
+
 
     const clearCart = () => {
         setCart([])
 
+
     }
 
 
+
     return (
-        <Shop.Provider value={{ cart, addItem, removeItem, clearCart}}>
+        <Shop.Provider value={{ cart, addItem, removeItem, clearCart, totalPrice}}>
             {children}
         </Shop.Provider>
     )
 }
+
 
 export default ShopProvider;
