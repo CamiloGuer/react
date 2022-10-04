@@ -14,13 +14,13 @@ import ShopProvider from './context/ShopProvider';
 
 function App() {
 
-const categorias = ["Vinos Y Espumantes","Whisky","Cervezas","Espirituosas"];
+//const categorias = ["Vinos Y Espumantes","Whisky","Cervezas","Espirituosas"];
   
   
   return (
     <ShopProvider>
           <BrowserRouter>
-            <NavBar categories={categorias}/>
+            <NavBar/>
             <Routes>
 
               <Route path='/' element={<ItemListContainer/>}/>
